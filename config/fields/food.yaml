@@ -1,0 +1,23 @@
+category:
+  label: Категория
+  type: enum
+  enumLabels:
+    chinese_must_try: Стоит попробовать
+    familiar_russian: Привычная еда
+  showOnCard: true
+district:
+  label: Район
+  type: text
+  showOnCard: true
+address:
+  label: Адрес
+  type: text
+  showOnCard: true
+nearPlaces:
+  label: Рядом с
+  type: tags
+  showOnCard: true
+cost:
+  label: Стоимость
+  type: text
+  showOnCard: true

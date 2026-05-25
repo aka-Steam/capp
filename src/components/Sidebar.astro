@@ -1,0 +1,52 @@
+---
+import { getNavigation, withBase } from '../lib/config';
+
+const nav = getNavigation();
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const base = import.meta.env.BASE_URL;
+---
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__brand">🧧 China</div>
+  <nav class="sidebar__nav" aria-label="Основное меню">
+    {
+      nav.map((section) => (
+        <>
+          <div class="sidebar__section-title">{section.title}</div>
+          {section.items.map((item) => {
+            const href = withBase(item.href, base);
+            const path = item.href.replace(/\/$/, '') || '/';
+            const isActive =
+              currentPath === path ||
+              currentPath.endsWith(path) ||
+              (path !== '/' && currentPath.includes(path));
+            return (
+              <a class:list={['sidebar__link', { 'sidebar__link--active': isActive }]} href={href}>
+                {item.label}
+              </a>
+            );
+          })}
+        </>
+      ))
+    }
+  </nav>
+</aside>
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  function closeSidebar() {
+    sidebar?.classList.remove('sidebar--open');
+    overlay?.classList.remove('sidebar-overlay--visible');
+  }
+
+  toggle?.addEventListener('click', () => {
+    sidebar?.classList.toggle('sidebar--open');
+    overlay?.classList.toggle('sidebar-overlay--visible');
+  });
+
+  overlay?.addEventListener('click', closeSidebar);
+</script>

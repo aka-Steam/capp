@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import Sidebar from '../components/Sidebar.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Планирование поездки в Китай' } = Astro.props;
+const fullTitle = `${title} · Китай`;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+    <div class="app-shell">
+      <Sidebar />
+      <main class="main">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

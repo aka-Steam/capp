@@ -1,0 +1,75 @@
+---
+import type { FieldRow } from '../lib/fieldRows';
+
+interface Props {
+  rows: FieldRow[];
+}
+
+const { rows } = Astro.props;
+
+function formatValue(row: FieldRow): string | null {
+  const { value, type, enumLabels } = row;
+  if (value === undefined || value === null || value === '') return null;
+
+  if (type === 'enum' && typeof value === 'string') {
+    return enumLabels?.[value] ?? value;
+  }
+  if (type === 'money' && typeof value === 'number') {
+    return String(value);
+  }
+  if (type === 'tags' && Array.isArray(value)) {
+    return value.join(', ');
+  }
+  if (type === 'links' && Array.isArray(value)) {
+    return null;
+  }
+  return String(value);
+}
+---
+
+<ul class="field-list">
+  {
+    rows.map((row) => {
+      if (row.type === 'stars' && typeof row.value === 'number') {
+        const full = Math.round(row.value);
+        const stars = '★'.repeat(full) + '☆'.repeat(5 - full);
+        return (
+          <li>
+            <span class="field-list__label">{row.label}: </span>
+            <span class="stars" title={`${row.value} / 5`}>{stars}</span>
+          </li>
+        );
+      }
+      if (row.type === 'url' && typeof row.value === 'string') {
+        return (
+          <li>
+            <span class="field-list__label">{row.label}: </span>
+            <a href={row.value} target="_blank" rel="noopener noreferrer">
+              {row.label}
+            </a>
+          </li>
+        );
+      }
+      if (row.type === 'links' && Array.isArray(row.value)) {
+        return (
+          <li>
+            <span class="field-list__label">{row.label}: </span>
+            {(row.value as { label: string; url: string }[]).map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </li>
+        );
+      }
+      const text = formatValue(row);
+      if (!text) return null;
+      return (
+        <li>
+          <span class="field-list__label">{row.label}: </span>
+          {text}
+        </li>
+      );
+    })
+  }
+</ul>

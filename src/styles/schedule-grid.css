@@ -1,0 +1,144 @@
+.schedule-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+}
+
+.schedule-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.schedule-legend__swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.schedule-grid {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.schedule-day {
+  flex: 0 0 200px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.schedule-day__header {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-accent-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-day__grid {
+  position: relative;
+  height: 576px;
+}
+
+.schedule-hour {
+  height: 24px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.65rem;
+  color: var(--color-muted);
+  padding-left: 0.25rem;
+  line-height: 24px;
+}
+
+.schedule-event {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.25rem 0.35rem;
+  font-size: 0.7rem;
+  overflow: hidden;
+  z-index: 2;
+  box-sizing: border-box;
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.schedule-event__time {
+  opacity: 0.92;
+  font-size: 0.65rem;
+}
+
+.schedule-event__pack {
+  margin: 0.25rem 0 0;
+  padding-left: 1rem;
+  font-size: 0.6rem;
+  opacity: 0.95;
+}
+
+.schedule-event a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Типы событий */
+.schedule-event--flight,
+.schedule-legend__swatch.schedule-event--flight {
+  background: #2563eb;
+}
+
+.schedule-event--train,
+.schedule-legend__swatch.schedule-event--train {
+  background: #7c3aed;
+}
+
+.schedule-event--bus,
+.schedule-legend__swatch.schedule-event--bus {
+  background: #0d9488;
+}
+
+.schedule-event--metro,
+.schedule-legend__swatch.schedule-event--metro {
+  background: #0891b2;
+}
+
+.schedule-event--taxi,
+.schedule-legend__swatch.schedule-event--taxi {
+  background: #ca8a04;
+}
+
+.schedule-event--visit,
+.schedule-legend__swatch.schedule-event--visit {
+  background: var(--color-accent);
+}
+
+.schedule-event--shop,
+.schedule-legend__swatch.schedule-event--shop {
+  background: #db2777;
+}
+
+.schedule-event--food,
+.schedule-legend__swatch.schedule-event--food {
+  background: #ea580c;
+}
+
+.schedule-event--hotel,
+.schedule-legend__swatch.schedule-event--hotel {
+  background: #4f46e5;
+}
+
+.schedule-event--free,
+.schedule-legend__swatch.schedule-event--free {
+  background: #64748b;
+  color: #f8fafc;
+}

@@ -1,0 +1,34 @@
+type:
+  label: Тип
+  type: enum
+  enumLabels:
+    flight: Авиа
+    train: Поезд
+    bus: Автобус
+    metro: Метро
+    taxi: Такси
+  showOnCard: true
+from:
+  label: Откуда
+  type: text
+  showOnCard: true
+to:
+  label: Куда
+  type: text
+  showOnCard: true
+duration:
+  label: Время в пути
+  type: text
+  showOnCard: true
+cost:
+  label: Стоимость
+  type: text
+  showOnCard: true
+notes:
+  label: Заметки
+  type: text
+  showOnCard: true
+bookingLinks:
+  label: Бронирование
+  type: links
+  showOnCard: true

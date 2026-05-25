@@ -1,0 +1,31 @@
+kind:
+  label: Тип
+  type: enum
+  enumLabels:
+    attraction: Достопримечательность
+    shop: Магазин
+  showOnCard: true
+district:
+  label: Район
+  type: text
+  showOnCard: true
+address:
+  label: Адрес
+  type: text
+  showOnCard: true
+hours:
+  label: Часы работы
+  type: text
+  showOnCard: true
+cost:
+  label: Стоимость
+  type: text
+  showOnCard: true
+# rating:
+#   label: Рейтинг
+#   type: stars
+#   showOnCard: true
+links:
+  label: Ссылки
+  type: links
+  showOnCard: true

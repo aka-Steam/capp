@@ -1,0 +1,4 @@
+tileUrl: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+defaultZoom: 12
+focusZoom: 15

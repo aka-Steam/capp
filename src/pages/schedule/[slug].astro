@@ -1,0 +1,37 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import ScheduleGrid from '../../islands/ScheduleGrid.svelte';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const schedules = await getCollection('schedules');
+  return schedules.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const days = entry.data.days.map((day) => ({
+  date: day.date.toISOString().slice(0, 10),
+  label: day.date.toLocaleDateString('ru-RU', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'long',
+  }),
+  events: day.events,
+}));
+---
+
+<AppLayout title={entry.data.title}>
+  <header class="page-header">
+    <h1>{entry.data.title}</h1>
+    <p>
+      Календарь по дням. У события укажите <code>kind</code> — цвет и раздел справочника для
+      <code>ref</code> (flight, train, visit, food, hotel, free и др.).
+    </p>
+  </header>
+  <ScheduleGrid client:load {days} baseUrl={base} />
+</AppLayout>

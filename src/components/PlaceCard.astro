@@ -1,0 +1,30 @@
+---
+import FieldRenderer from './FieldRenderer.astro';
+import { cityLabels } from '../lib/config';
+import { buildFieldRows } from '../lib/fieldRows';
+import type { FieldsRegistry } from '../lib/config';
+
+interface Props {
+  id: string;
+  city?: string;
+  title: string;
+  body?: string;
+  data: Record<string, unknown>;
+  fieldsRegistry: FieldsRegistry;
+  highlight?: boolean;
+}
+
+const { id, city, title, body, data, fieldsRegistry, highlight = false } = Astro.props;
+const rows = buildFieldRows(data, fieldsRegistry);
+---
+
+<article
+  class:list={['place-card', { 'place-card--highlight': highlight }]}
+  id={`place-${id}`}
+  data-place-id={id}
+>
+  <h2 class="place-card__title">{title}</h2>
+  {city && <div class="place-card__city">{cityLabels[city] ?? city}</div>}
+  <FieldRenderer rows={rows} />
+  {body && <div class="place-card__body" set:html={body} />}
+</article>
