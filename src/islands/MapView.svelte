@@ -3,12 +3,9 @@
   import type { CircleMarker, Map as LeafletMap } from 'leaflet';
   import type * as Leaflet from 'leaflet';
   import { patchLeafletMeasure } from '../lib/patchLeafletMeasure';
+  import { categoryColors, type MapPlace } from '../lib/poi';
 
-  export interface MapPlace {
-    id: string;
-    title: string;
-    coords: [number, number];
-  }
+  export type { MapPlace };
 
   interface MapConfig {
     tileUrl: string;
@@ -23,7 +20,8 @@
     leafletBase: string;
     highlightedId?: string | null;
     focusedId?: string | null;
-    variant?: 'sidebar' | 'modal';
+    variant?: 'sidebar' | 'modal' | 'explorer';
+    onSelect?: (id: string) => void;
   }
 
   let {
@@ -33,6 +31,7 @@
     highlightedId = null,
     focusedId = $bindable<string | null>(null),
     variant = 'sidebar',
+    onSelect,
   }: Props = $props();
 
   let container: HTMLDivElement;
@@ -45,6 +44,10 @@
   const markers = new Map<string, CircleMarker>();
 
   const measureBase = $derived(leafletBase.replace(/leaflet\/$/, 'leaflet-measure/'));
+
+  function markerColor(place: MapPlace): string {
+    return (place.category && categoryColors[place.category]) || '#c41e3a';
+  }
 
   function loadScript(src: string): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -114,10 +117,11 @@
     markerClickHandlers.clear();
 
     for (const place of places) {
+      const color = markerColor(place);
       const marker = L.circleMarker(place.coords, {
         radius: 8,
-        color: '#c41e3a',
-        fillColor: '#c41e3a',
+        color,
+        fillColor: color,
         fillOpacity: 0.85,
         weight: 2,
       })
@@ -127,6 +131,7 @@
       const onMarkerClick = () => {
         if (measuring) return;
         focusedId = place.id;
+        onSelect?.(place.id);
         focusOnMap(place.id);
       };
       marker.on('click', onMarkerClick);
@@ -237,8 +242,7 @@
 </script>
 
 <div
-  class="map-panel"
-  class:map-panel--modal={variant === 'modal'}
+  class={['map-panel', variant === 'modal' && 'map-panel--modal', variant === 'explorer' && 'map-panel--explorer']}
   bind:this={container}
   role="application"
   aria-label="Карта мест"

@@ -1,18 +1,77 @@
 ---
 import AppLayout from '../../layouts/AppLayout.astro';
-import InfoDirectory from '../../islands/InfoDirectory.svelte';
-import { buildLogisticsPageData } from '../../lib/infoPage';
+import { getCollection } from 'astro:content';
+import type { ILogistics, LogisticsType } from '../../types';
 
-const { cards, places, mapConfig, leafletBase, showMap } = await buildLogisticsPageData();
+const typeOrder: Record<LogisticsType, number> = {
+  flight: 0,
+  train: 1,
+  bus: 2,
+  metro: 3,
+  taxi: 4,
+};
+
+const typeLabels: Record<LogisticsType, string> = {
+  flight: 'Авиа',
+  train: 'Поезда',
+  bus: 'Автобусы',
+  metro: 'Метро',
+  taxi: 'Такси',
+};
+
+const entries = (await getCollection('logistics'))
+  .map((e) => e.data as ILogistics)
+  .sort(
+    (a, b) =>
+      (typeOrder[a.type] ?? 99) - (typeOrder[b.type] ?? 99) ||
+      `${a.from} → ${a.to}`.localeCompare(`${b.from} → ${b.to}`, 'ru'),
+  );
 ---
 
 <AppLayout title="Логистика">
   <header class="page-header">
     <h1>Логистика</h1>
-    <p>
-      Файлы по типу транспорта: <code>flights.md</code>, <code>trains.md</code>, <code>buses.md</code> и др. В
-      каждом — несколько маршрутов с заметками и ссылками на бронирование.
-    </p>
+    <p>Перелёты, поезда, автобусы, метро и такси — отдельно от точек на карте.</p>
   </header>
-  <InfoDirectory client:load {cards} {places} {mapConfig} {leafletBase} {showMap} />
+  <div class="place-list logistics-list">
+    {
+      entries.map((item) => (
+        <article class="place-card" id={`place-${item.id}`}>
+          <h2 class="place-card__title">
+            {item.from} → {item.to}
+          </h2>
+          <div class="place-card__city">{typeLabels[item.type]}</div>
+          <ul class="field-list">
+            {item.duration && (
+              <li>
+                <span class="field-list__label">Время:</span> {item.duration}
+              </li>
+            )}
+            {item.cost && (
+              <li>
+                <span class="field-list__label">Стоимость:</span> {item.cost}
+              </li>
+            )}
+            {item.notes && (
+              <li>
+                <span class="field-list__label">Заметки:</span> {item.notes}
+              </li>
+            )}
+          </ul>
+          {item.description && <div class="place-card__body">{item.description}</div>}
+          {item.bookingLinks && item.bookingLinks.length > 0 && (
+            <ul class="field-list">
+              {item.bookingLinks.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
 </AppLayout>

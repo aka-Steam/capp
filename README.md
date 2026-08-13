@@ -1,10 +1,6 @@
 # Поездка в Китай — справочник и расписание
 
-Статический сайт на [Astro](https://astro.build) + [Svelte](https://svelte.dev) для планирования поездки. Данные хранятся в Markdown/YAML в папке `content/` — сайт только отображает их.
-
-## Obsidian
-
-Откройте папку **`content`** как vault (не отдельную подпапку). Редактируйте `attractions/places.md`, `food/beijing.md`, `logistics/trains.md` и т.д. — это те же файлы, что использует сайт.
+Статический сайт на [Astro](https://astro.build) + [Svelte](https://svelte.dev) для планирования поездки. Данные хранятся в JSON в папке `database/` — сайт только отображает их.
 
 ## Локальный запуск
 
@@ -17,23 +13,30 @@ npm run dev
 
 ## Структура данных
 
-| Папка | Содержимое |
-|-------|------------|
-| `content/` | **Vault для Obsidian** — те же файлы, что читает сайт ([формат](docs/content-format.md)) |
-| `content/attractions/places.md` | Достопримечательности (bundle) |
-| `content/food/beijing.md`, `shanghai.md` | Вся еда города в одном файле |
-| `content/hotels/beijing.md`, `shanghai.md` | Несколько отелей на выбор |
-| `content/logistics/trains.md`, `buses.md`, … | Маршруты по типу транспорта |
-| `content/schedules/*.yaml` | Расписание ([формат](docs/schedule.md)) |
-| `public/images/` | Локальные фото |
-| `content/hotels/` | Отели |
-| `content/food/` | Еда |
-| `content/logistics/` | Перелёты, поезда и т.д. |
-| `content/schedules/` | Варианты расписания (YAML) |
-| `config/fields/` | Какие поля показывать на карточках |
+| Файл / папка | Содержимое |
+|--------------|------------|
+| `database/poi.json` | Места: достопримечательности, магазины, кафе, рестораны |
+| `database/media/` | Локальные фото и видео (`src: "/media/имя-файла"`) |
+| `database/hotels.json` | Отели (`category: "hotel"` + опциональный блок `stay`) |
+| `database/logistics.json` | Перелёты, поезда, автобусы, метро, такси |
+| `content/schedules/*.yaml` | Расписание |
 | `config/navigation.yaml` | Пункты бокового меню |
+| `config/map.yaml` | Тайлы Leaflet |
+| `public/leaflet/` | Self-hosted Leaflet |
+| `public/leaflet-measure/` | Линейка расстояний |
 
-Как добавить поле — [docs/adding-a-field.md](docs/adding-a-field.md).
+Модель места — `IPoi` в `src/types.ts`. Отель — `IHotel` (тот же POI + `stay`: цены, `hasSingleRoom`, `nearbyWalkable`).
+
+## Страницы
+
+- `/map` — карта всех точек, панель справа по клику на маркер
+- `/points` — список мест с фильтрами по категории и городу
+- `/poi/[id]` — карточка места
+- `/hotels` — сравнение отелей с калькулятором ночей
+- `/logistics` — маршруты
+- `/schedule/demo` — расписание
+
+Старые URL `/attractions` и `/food` перенаправляют на `/points`.
 
 ## Сборка
 
@@ -64,13 +67,6 @@ npm run preview
 
 ## Карта
 
-Используются [Leaflet](https://leafletjs.com/) и тайлы OpenStreetMap. URL тайлов — в `config/map.yaml`. Библиотека лежит в `public/leaflet/` (без внешнего CDN).
+Используются [Leaflet](https://leafletjs.com/) и тайлы OpenStreetMap. URL тайлов — в `config/map.yaml`. Библиотека лежит в `public/leaflet/` (без внешнего CDN). На карте есть линейка расстояний (`leaflet-measure`).
 
-Координаты берите с [openstreetmap.org](https://www.openstreetmap.org/) — китайские карты могут использовать смещение GCJ-02.
-
-## Новый раздел меню
-
-1. Запись в `config/navigation.yaml`.
-2. Коллекция в `src/content.config.ts` + папка `content/<раздел>/`.
-3. `config/fields/<раздел>.yaml`.
-4. Страница `src/pages/<раздел>/index.astro` (скопируйте с `attractions` или `logistics`).
+Координаты берите с [openstreetmap.org](https://www.openstreetmap.org/) — китайские карты могут использовать смещение GCJ-02. В данных поле `location.geo.system` может быть `wgs84`, `gcj02` или `bd09`.

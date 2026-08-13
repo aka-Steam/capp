@@ -1,15 +1,15 @@
 sections:
   - title: Планирование
     items:
+      - label: Карта
+        href: /map
       - label: Расписание
         href: /schedule/demo
   - title: Справочник
     items:
-      - label: Достопримечательности
-        href: /attractions
+      - label: Места
+        href: /points
       - label: Отели
         href: /hotels
-      - label: Еда
-        href: /food
       - label: Логистика
         href: /logistics

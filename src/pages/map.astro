@@ -1,0 +1,24 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import MapExplorer from '../islands/MapExplorer.svelte';
+import { getCollection } from 'astro:content';
+import { leafletAssets } from '../lib/mapAssets';
+import { toMapPlaces, toPlaceCard } from '../lib/poi';
+import type { IHotel, IPoi } from '../types';
+
+const pois = (await getCollection('poi')).map((e) => e.data as IPoi);
+const hotels = (await getCollection('hotels')).map((e) => e.data as IHotel);
+const all = [...pois, ...hotels];
+const base = import.meta.env.BASE_URL;
+const cards = all.map((p) => toPlaceCard(p, base));
+const places = toMapPlaces(all);
+const { mapConfig, leafletBase } = leafletAssets(base);
+---
+
+<AppLayout title="Карта" description="Все места на одной карте">
+  <header class="page-header">
+    <h1>Карта</h1>
+    <p>Нажмите на маркер — справа появится краткая информация. Линейка измеряет расстояние.</p>
+  </header>
+  <MapExplorer client:load {cards} {places} {mapConfig} {leafletBase} />
+</AppLayout>

@@ -1,0 +1,199 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import MapView from '../../islands/MapView.svelte';
+import MediaSlider from '../../islands/MediaSlider.svelte';
+import { getCollection, getEntry } from 'astro:content';
+import { leafletAssets } from '../../lib/mapAssets';
+import {
+  categoryLabels,
+  cityLabel,
+  formatPrice,
+  normalizeMedia,
+  poiCoords,
+  toMapPlace,
+} from '../../lib/poi';
+import { withBase } from '../../lib/config';
+import type { IHotel, IPoi } from '../../types';
+
+export async function getStaticPaths() {
+  const pois = await getCollection('poi');
+  const hotels = await getCollection('hotels');
+  return [
+    ...pois.map((entry) => ({
+      params: { id: entry.id },
+      props: { collection: 'poi' as const },
+    })),
+    ...hotels.map((entry) => ({
+      params: { id: entry.id },
+      props: { collection: 'hotels' as const },
+    })),
+  ];
+}
+
+const { id } = Astro.params;
+const { collection } = Astro.props;
+const entry = await getEntry(collection, id!);
+const raw = entry?.data;
+if (!raw) {
+  return Astro.redirect('/points');
+}
+
+const poi = raw as IPoi | IHotel;
+const hotel = poi.category === 'hotel' ? (poi as IHotel) : undefined;
+const allPoi = [
+  ...(await getCollection('poi')).map((e) => e.data as IPoi),
+  ...(await getCollection('hotels')).map((e) => e.data as IHotel),
+];
+const titleById = new Map(allPoi.map((p) => [p.id, p.title]));
+const base = import.meta.env.BASE_URL;
+const media = normalizeMedia(poi.media, base);
+const coords = poiCoords(poi);
+const mapPlace = toMapPlace(poi);
+const { mapConfig, leafletBase } = leafletAssets(base);
+const priceLabel = formatPrice(poi.visit?.price);
+const stay = hotel?.stay;
+---
+
+<AppLayout title={poi.title} description={poi.description}>
+  <header class="page-header">
+    <p class="poi-detail__crumb">
+      <a href={withBase('/points', base)}>Места</a>
+      {hotel && <> · <a href={withBase('/hotels', base)}>Отели</a></>}
+    </p>
+    <h1 class="poi-detail__title">
+      {poi.title}
+      {
+        poi.verified && (
+          <span class="verified-badge" title="Информация проверена" aria-label="Информация проверена">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <circle cx="12" cy="12" r="11" fill="#1d9bf0" />
+              <path
+                d="M7.2 12.4 10.1 15.3 16.8 8.6"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        )
+      }
+    </h1>
+    <p>
+      {categoryLabels[poi.category]}
+      · {cityLabel(poi.location.cityId, poi.location.province)}
+    </p>
+  </header>
+
+  <div class="poi-detail">
+    <div class="poi-detail__main">
+      {media.length > 0 && <MediaSlider client:load items={media} />}
+
+      {poi.description && <div class="poi-detail__description">{poi.description}</div>}
+
+      <ul class="field-list">
+        {poi.location.address && (
+          <li>
+            <span class="field-list__label">Адрес:</span> {poi.location.address}
+          </li>
+        )}
+        {poi.location.district && (
+          <li>
+            <span class="field-list__label">Район:</span> {poi.location.district}
+          </li>
+        )}
+        {poi.visit?.openingHours && (
+          <li>
+            <span class="field-list__label">Часы:</span> {poi.visit.openingHours}
+          </li>
+        )}
+        {poi.visit?.durationMin && (
+          <li>
+            <span class="field-list__label">Длительность:</span> {poi.visit.durationMin} мин
+          </li>
+        )}
+        {priceLabel && (
+          <li>
+            <span class="field-list__label">Стоимость:</span> {priceLabel}
+          </li>
+        )}
+        {poi.visit?.bookingRequired && (
+          <li>
+            <span class="field-list__label">Бронь:</span> нужна
+          </li>
+        )}
+        {poi.visit?.notes && (
+          <li class="poi-detail__notes">
+            <span class="field-list__label">Заметки:</span>
+            <span class="poi-detail__notes-text">{poi.visit.notes}</span>
+          </li>
+        )}
+      </ul>
+
+      {
+        stay && (
+          <div class="hotel-prices">
+            <ul class="field-list">
+              <li>
+                <span class="field-list__label">Одноместный:</span>
+                {stay.hasSingleRoom === false || stay.priceSingle === undefined
+                  ? 'нет'
+                  : `${stay.priceSingle} ${stay.currency ?? 'CNY'}`}
+              </li>
+              <li>
+                <span class="field-list__label">Двухместный:</span>
+                {stay.priceDouble === undefined ? '—' : `${stay.priceDouble} ${stay.currency ?? 'CNY'}`}
+              </li>
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        stay?.nearbyWalkable && stay.nearbyWalkable.length > 0 && (
+          <div class="hotel-nearby">
+            <div class="hotel-nearby__title">Пешком до 35 мин</div>
+            <ul class="hotel-nearby__list">
+              {stay.nearbyWalkable.map((item) => (
+                <li>
+                  <a href={withBase(`/poi/${item.ref}`, base)}>{titleById.get(item.ref) ?? item.ref}</a>
+                  <span class="hotel-nearby__time">~{item.walkMinutes} мин</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        poi.links.length > 0 && (
+          <ul class="field-list">
+            {poi.links.map((link) => (
+              <li>
+                <a href={link.url} target="_blank" rel="noreferrer">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+
+    {
+      mapPlace && coords && (
+        <aside class="map-rail poi-detail__map" aria-label="Карта">
+          <MapView
+            client:load
+            places={[mapPlace]}
+            {mapConfig}
+            {leafletBase}
+            focusedId={poi.id}
+            variant="sidebar"
+          />
+        </aside>
+      )
+    }
+  </div>
+</AppLayout>

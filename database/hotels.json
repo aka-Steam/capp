@@ -1,0 +1,200 @@
+[
+  {
+    "id": "rotating-breakfast-shanghai",
+    "title": "Вращающийся ресторан с завтраком (отель, вид на Шанхай)",
+    "description": "Отель с завтраком в ресторане, который медленно вращается, открывая панораму Шанхая. Точное название и адрес не указаны в источнике (автор упоминает, что оставил их в закрепе).",
+    "category": "hotel",
+    "kind": null,
+    "theme": "food",
+    "location": {
+      "geo": {
+        "lat": null,
+        "lon": null,
+        "system": null
+      },
+      "cityId": null,
+      "province": "Shanghai",
+      "address": null,
+      "district": null
+    },
+    "visit": {
+      "durationMin": null,
+      "openingHours": null,
+      "price": null,
+      "bookingRequired": null
+    },
+    "media": [],
+    "links": [
+      {
+        "label": "Instagram Reel",
+        "url": "https://www.instagram.com/reel/DZXnblKs_bD/"
+      }
+    ],
+    "createdAt": "2026-08-13T04:59:31.207657+00:00",
+    "updatedAt": "2026-08-13T04:59:31.207657+00:00",
+    "verified": false
+  },
+  {
+    "id": "furong-flower-waterfall-homestay",
+    "title": "Furong Town Flower Waterfall Bay Homestay",
+    "description": "Гестхаус в Фуронге с номерами с видом на реку/водопад. По отзыву автора — один из лучших номеров в городе с видом на водопад (можно попросить upgrade на месте).",
+    "category": "hotel",
+    "kind": null,
+    "theme": "scenic",
+    "location": {
+      "geo": {
+        "lat": 28.7431,
+        "lon": 109.9462,
+        "system": "wgs84"
+      },
+      "cityId": null,
+      "province": "Hunan",
+      "address": "Furong Ancient Town, Yongshun County, Hunan",
+      "district": null
+    },
+    "visit": {
+      "durationMin": null,
+      "openingHours": null,
+      "price": null,
+      "bookingRequired": null
+    },
+    "media": [],
+    "links": [
+      {
+        "label": "Instagram Reel",
+        "url": "https://www.instagram.com/reel/DWWMeQmDE4J/"
+      }
+    ],
+    "createdAt": "2026-08-13T04:59:31.207657+00:00",
+    "updatedAt": "2026-08-13T04:59:31.207657+00:00",
+    "verified": false
+  },
+  {
+    "id": "hotel-demo-beijing",
+    "title": "West Hotel (Beijing Tian'anmen Qianmen Dashilan)",
+    "description": "Цена примерная, усредненная за номера. Близко к площади и запретному городу",
+    "category": "hotel",
+    "location": {
+      "geo": {
+        "lat": 39.895169,
+        "lon": 116.393189,
+        "source": "google",
+        "system": "wgs84"
+      },
+      "cityId": "beijing",
+      "address": "No. 41 Dashilan West Street, Сичен, Пекин, Китай",
+      "district": "Сичен"
+    },
+    "visit": {},
+    "media": [],
+    "links": [
+      {
+        "label": "Trip.com",
+        "url": "https://ru.trip.com/hotels/detail/?cityEnName=Beijing&cityId=1&hotelId=2337115&checkIn=2026-11-01&checkOut=2026-11-04&adult=2&children=0&crn=1&curr=RUB&barcurr=RUB&hoteluniquekey=H4sIAAAAAAAA_-M6wcTFJMEodZCJY8WdfTZCjAaOZ88AQU6egycDCBh0OATwFIKZO1ocGhlnzQSCpU0OMxhvX-pjXMHIuJExDQSeuTrsYGQ6wThLdAFTW3s_4ykWNo6-50wSLJdYdjBGVytlp1YqWZnoKJVkluSkKlkpXZh7YcqFhUo6SimpxclAPpCVmJtfmlcCZJuYWuqZmQFFShIrPFPA2pITc5JLcxJLUkMqC4DazXSUMoudS4oyC4JSczNLSlKBqtISc4pTQeJBqcVAmWSwoJIf0JgiqEBmfh5EuyGKWFhiTmkqxAlAC91SoXYY1sY-YmGKjv3EwvAL6JmWPj4JliZWhi5WhkmsbBwbbhhKsOxiZTN09gzwNr_AulBdSsHQwMDAyNTUyFzXINHSItXMzFTXxNLE2NRA19DQwtLEQOPpjq4HT42NrKVYpxx4Po1dgVFLMD7EMyjUyNy4LK2qpMIsLzHVgPEUo5ShubmZqaGJmaGBoYWZHlDawi3fOLs8MNTNgzmIzcTCzNTAOMqGi9nZL1IQHDcMH-ylmINCnRT_rPx4yTdph70WSM4QJhcYrNQZ57axxz4SJp_EWlSqGxSasVasgLGBkamLkVuA0YMxgrECyGNcxciwgZFxB-N_GGB8xQgyHQB_jCuJLgIAAA&masterhotelid_tracelogid=100025527-0a98e665-494350-118940&detailFilters=17%7C1~17~1*13%7C4189052~18~39.9033066%7C116.3977998%7CПлощадь+Тяньаньмэнь%7C4189052%7C2*80%7C2%7C1~80~2*29%7C1~29~1%7C1&hotelType=normal&display=incavg&subStamp=1394&isCT=true&isFlexible=F&locale=ru-RU"
+      }
+    ],
+    "stay": {
+      "priceSingle": 3300,
+      "priceDouble": 3300,
+      "hasSingleRoom": true,
+      "currency": "RUB",
+      "nearbyWalkable": [
+        {
+          "ref": "forbidden-city",
+          "walkMinutes": 33
+        }
+      ]
+    },
+    "createdAt": "2026-08-14T00:00:00.000Z",
+    "updatedAt": "2026-08-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "hotel-demo-shanghai",
+    "title": "Demo  (пример A)",
+    "description": "У Бунда, удобно для вечерних прогулок.",
+    "category": "hotel",
+    "location": {
+      "geo": {
+        "lat": 31.233,
+        "lon": 121.485,
+        "source": "google",
+        "system": "wgs84"
+      },
+      "cityId": "shanghai",
+      "address": "Near The Bund",
+      "district": "Хуанпу"
+    },
+    "visit": {},
+    "media": [],
+    "links": [
+      {
+        "label": "Trip.com",
+        "url": "https://www.trip.com/hotels/shanghai"
+      }
+    ],
+    "stay": {
+      "priceSingle": 480,
+      "priceDouble": 560,
+      "hasSingleRoom": true,
+      "currency": "CNY",
+      "nearbyWalkable": [
+        {
+          "ref": "the-bund",
+          "walkMinutes": 12
+        },
+        {
+          "ref": "yu-garden-bazaar",
+          "walkMinutes": 28
+        }
+      ]
+    },
+    "createdAt": "2026-08-14T00:00:00.000Z",
+    "updatedAt": "2026-08-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "hotel-demo-shanghai-b",
+    "title": "Demo  (пример B)",
+    "description": "Ближе к саду Юй и базару.",
+    "category": "hotel",
+    "location": {
+      "geo": {
+        "lat": 31.228,
+        "lon": 121.49,
+        "source": "google",
+        "system": "wgs84"
+      },
+      "cityId": "shanghai",
+      "address": "Near Yu Garden",
+      "district": "Хуанпу"
+    },
+    "visit": {},
+    "media": [],
+    "links": [
+      {
+        "label": "Trip.com",
+        "url": "https://www.trip.com/hotels/shanghai"
+      }
+    ],
+    "stay": {
+      "priceSingle": 420,
+      "priceDouble": 490,
+      "hasSingleRoom": true,
+      "currency": "CNY",
+      "nearbyWalkable": [
+        {
+          "ref": "yu-garden-bazaar",
+          "walkMinutes": 8
+        },
+        {
+          "ref": "the-bund",
+          "walkMinutes": 30
+        }
+      ]
+    },
+    "createdAt": "2026-08-14T00:00:00.000Z",
+    "updatedAt": "2026-08-14T00:00:00.000Z",
+    "verified": true
+  }
+]

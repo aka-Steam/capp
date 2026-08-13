@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import MapView, { type MapPlace } from './MapView.svelte';
+  import MapView from './MapView.svelte';
   import MapModal from './MapModal.svelte';
-  import type { HotelCardData } from '../lib/infoPage';
+  import { cityLabels, type HotelCardData, type MapPlace } from '../lib/poi';
 
   interface MapConfig {
     tileUrl: string;
@@ -52,16 +52,7 @@
     return () => mq.removeEventListener('change', update);
   });
 
-  const cities = $derived(
-    [...new Set(cards.map((c) => c.city).filter(Boolean))] as string[],
-  );
-
-  const cityLabels: Record<string, string> = {
-    beijing: 'Пекин',
-    shanghai: 'Шанхай',
-    pingyao: 'Пиньяо',
-    all: 'Все города',
-  };
+  const cities = $derived([...new Set(cards.map((c) => c.cityKey))]);
 
   function priceSingleTotal(card: HotelCardData): number {
     const n = effectiveNights();
@@ -75,7 +66,6 @@
     return card.priceDouble * n;
   }
 
-  /** Средняя стоимость номера за выбранное число ночей (по доступным типам). */
   function priceAverageTotal(card: HotelCardData): number {
     const n = effectiveNights();
     const perNight: number[] = [];
@@ -100,7 +90,7 @@
 
   const filteredCards = $derived.by(() => {
     let list =
-      selectedCity === 'all' ? [...cards] : cards.filter((c) => c.city === selectedCity);
+      selectedCity === 'all' ? [...cards] : cards.filter((c) => c.cityKey === selectedCity);
 
     switch (sortBy) {
       case 'avgAsc':
@@ -131,7 +121,7 @@
       ? places
       : places.filter((p) => {
           const card = cards.find((c) => c.id === p.id);
-          return card?.city === selectedCity;
+          return card?.cityKey === selectedCity;
         }),
   );
 
@@ -226,19 +216,11 @@
 </div>
 
 <div class="city-filter" role="group" aria-label="Фильтр по городу">
-  <button
-    type="button"
-    class:active={selectedCity === 'all'}
-    onclick={() => (selectedCity = 'all')}
-  >
+  <button type="button" class:active={selectedCity === 'all'} onclick={() => (selectedCity = 'all')}>
     {cityLabels.all}
   </button>
-  {#each cities as city}
-    <button
-      type="button"
-      class:active={selectedCity === city}
-      onclick={() => (selectedCity = city)}
-    >
+  {#each cities as city (city)}
+    <button type="button" class:active={selectedCity === city} onclick={() => (selectedCity = city)}>
       {cityLabels[city] ?? city}
     </button>
   {/each}
@@ -267,11 +249,15 @@
           tabindex={showMap && card.coords ? 0 : undefined}
         >
           <h2 class="place-card__title">{card.title}</h2>
-          {#if card.city}
+          {#if card.cityLabel}
             <div class="place-card__city">{card.cityLabel}</div>
           {/if}
-          {#if card.photosHtml}
-            <div class="place-card__photos">{@html card.photosHtml}</div>
+          {#if card.cover}
+            <div class="place-card__photos">
+              <figure class="place-card__cover">
+                <img src={card.cover.src} alt={card.cover.alt} loading="lazy" decoding="async" />
+              </figure>
+            </div>
           {/if}
           <ul class="field-list hotel-prices">
             <li class:hotel-prices--unavailable={!card.hasSingleRoom}>
@@ -301,25 +287,21 @@
             <div class="hotel-nearby">
               <div class="hotel-nearby__title">Пешком до 35 мин</div>
               <ul class="hotel-nearby__list">
-                {#each card.nearbyWalkable as place}
+                {#each card.nearbyWalkable as place (place.ref)}
                   <li>
-                    <a href={place.href}>{place.title}</a>
+                    <a href={place.href} onclick={(e) => e.stopPropagation()}>{place.title}</a>
                     <span class="hotel-nearby__time">~{place.walkMinutes} мин</span>
                   </li>
                 {/each}
               </ul>
             </div>
           {/if}
-          <div class="field-list-wrap">{@html card.fieldsHtml}</div>
-          {#if card.bodyHtml}
-            <div class="place-card__body">{@html card.bodyHtml}</div>
+          {#if card.description}
+            <div class="place-card__body">{card.description}</div>
           {/if}
+          <a class="place-card__more" href={card.href} onclick={(e) => e.stopPropagation()}>Подробнее</a>
           {#if showMap && card.coords && !isDesktop}
-            <button
-              type="button"
-              class="place-card__map-btn"
-              onclick={(e) => openMapModal(card.id, e)}
-            >
+            <button type="button" class="place-card__map-btn" onclick={(e) => openMapModal(card.id, e)}>
               Посмотреть на карте
             </button>
           {/if}

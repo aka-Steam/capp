@@ -1,0 +1,30 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import PlacesDirectory from '../../islands/PlacesDirectory.svelte';
+import { getCollection } from 'astro:content';
+import { leafletAssets } from '../../lib/mapAssets';
+import { toMapPlaces, toPlaceCard } from '../../lib/poi';
+import type { IPoi } from '../../types';
+
+const entries = await getCollection('poi');
+const pois = entries.map((e) => e.data as IPoi);
+const base = import.meta.env.BASE_URL;
+const cards = pois.map((p) => toPlaceCard(p, base));
+const places = toMapPlaces(pois);
+const { mapConfig, leafletBase } = leafletAssets(base);
+---
+
+<AppLayout title="Места для посещения" description="Достопримечательности, магазины, кафе и рестораны">
+  <header class="page-header">
+    <h1>Места для посещения</h1>
+    <p>Фильтры по категории и городу. Нажмите карточку, чтобы найти место на карте.</p>
+  </header>
+  <PlacesDirectory
+    client:load
+    {cards}
+    {places}
+    {mapConfig}
+    {leafletBase}
+    showMap={places.length > 0}
+  />
+</AppLayout>

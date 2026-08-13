@@ -8,15 +8,12 @@ const base = import.meta.env.BASE_URL;
 <AppLayout title="Главная" description="Планирование поездки в Китай">
   <header class="page-header">
     <h1>Поездка в Китай</h1>
-    <p>
-      Справочник мест, отелей, еды и логистики. Данные хранятся в файлах репозитория — сайт
-      показывает их в удобном виде.
-    </p>
+    <p>Справочник мест, отелей и логистики. Данные — JSON в папке <code>database/</code>.</p>
   </header>
   <ul>
-    <li><a href={withBase('/attractions', base)}>Достопримечательности и магазины</a></li>
+    <li><a href={withBase('/map', base)}>Карта всех мест</a></li>
+    <li><a href={withBase('/points', base)}>Места для посещения</a></li>
     <li><a href={withBase('/hotels', base)}>Отели</a></li>
-    <li><a href={withBase('/food', base)}>Еда</a></li>
     <li><a href={withBase('/logistics', base)}>Логистика</a></li>
     <li><a href={withBase('/schedule/demo', base)}>Расписание (демо)</a></li>
   </ul>

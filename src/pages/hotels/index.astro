@@ -1,9 +1,21 @@
 ---
 import AppLayout from '../../layouts/AppLayout.astro';
 import HotelsDirectory from '../../islands/HotelsDirectory.svelte';
-import { buildHotelsPageData } from '../../lib/infoPage';
+import { getCollection } from 'astro:content';
+import { leafletAssets } from '../../lib/mapAssets';
+import { toHotelCard, toMapPlaces } from '../../lib/poi';
+import type { IHotel, IPoi } from '../../types';
 
-const { cards, places, mapConfig, leafletBase, showMap } = await buildHotelsPageData();
+const hotels = (await getCollection('hotels')).map((e) => e.data as IHotel);
+const pois = (await getCollection('poi')).map((e) => e.data as IPoi);
+const titleById = new Map<string, string>([
+  ...pois.map((p) => [p.id, p.title] as const),
+  ...hotels.map((h) => [h.id, h.title] as const),
+]);
+const base = import.meta.env.BASE_URL;
+const cards = hotels.map((h) => toHotelCard(h, base, titleById));
+const places = toMapPlaces(hotels);
+const { mapConfig, leafletBase } = leafletAssets(base);
 ---
 
 <AppLayout title="Отели">
@@ -14,5 +26,5 @@ const { cards, places, mapConfig, leafletBase, showMap } = await buildHotelsPage
       средней, одноместному или двухместному номеру (↑ / ↓).
     </p>
   </header>
-  <HotelsDirectory client:load {cards} {places} {mapConfig} {leafletBase} {showMap} />
+  <HotelsDirectory client:load {cards} {places} {mapConfig} {leafletBase} showMap={places.length > 0} />
 </AppLayout>

@@ -3,29 +3,6 @@ import yaml from 'js-yaml';
 import mapYaml from '../../config/map.yaml?raw';
 import navigationYaml from '../../config/navigation.yaml?raw';
 
-import attractionsFieldsYaml from '../../config/fields/attractions.yaml?raw';
-import hotelsFieldsYaml from '../../config/fields/hotels.yaml?raw';
-import foodFieldsYaml from '../../config/fields/food.yaml?raw';
-import logisticsFieldsYaml from '../../config/fields/logistics.yaml?raw';
-
-export type FieldType =
-  | 'text'
-  | 'stars'
-  | 'url'
-  | 'money'
-  | 'enum'
-  | 'links'
-  | 'tags';
-
-export interface FieldConfig {
-  label: string;
-  type: FieldType;
-  showOnCard?: boolean;
-  enumLabels?: Record<string, string>;
-}
-
-export type FieldsRegistry = Record<string, FieldConfig>;
-
 export interface NavItem {
   label: string;
   href: string;
@@ -41,17 +18,6 @@ export interface MapConfig {
   attribution: string;
   defaultZoom: number;
   focusZoom: number;
-}
-
-const fieldsByCollection: Record<string, FieldsRegistry> = {
-  attractions: yaml.load(attractionsFieldsYaml) as FieldsRegistry,
-  hotels: yaml.load(hotelsFieldsYaml) as FieldsRegistry,
-  food: yaml.load(foodFieldsYaml) as FieldsRegistry,
-  logistics: yaml.load(logisticsFieldsYaml) as FieldsRegistry,
-};
-
-export function getFieldsConfig(collection: string): FieldsRegistry {
-  return fieldsByCollection[collection] ?? {};
 }
 
 export function getNavigation(): NavSection[] {
@@ -79,10 +45,3 @@ export function withBase(href: string, base: string): string {
   }
   return href;
 }
-
-export const cityLabels: Record<string, string> = {
-  beijing: 'Пекин',
-  shanghai: 'Шанхай',
-  pingyao: 'Пиньяо',
-  all: 'Все города',
-};
