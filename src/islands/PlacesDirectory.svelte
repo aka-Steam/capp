@@ -2,7 +2,9 @@
   import { onMount } from 'svelte';
   import MapView from './MapView.svelte';
   import MapModal from './MapModal.svelte';
+  import PlaceCardHeading from './PlaceCardHeading.svelte';
   import { categoryLabels, cityLabels, NO_CITY, type MapPlace, type PlaceCardData } from '../lib/poi';
+  import { countLabel, placeForms } from '../lib/plural';
   import type { Category } from '../types';
 
   interface MapConfig {
@@ -128,6 +130,14 @@
   {/each}
 </div>
 
+<p class="list-count" aria-live="polite">
+  {#if filteredCards.length === cards.length}
+    Всего {countLabel(cards.length, placeForms)}
+  {:else}
+    Показано {countLabel(filteredCards.length, placeForms)} из {cards.length}
+  {/if}
+</p>
+
 <div
   class="info-page-layout"
   class:info-page-layout--with-map={showMap && isDesktop}
@@ -149,7 +159,7 @@
           role={showMap && isDesktop && card.coords ? 'button' : undefined}
           tabindex={showMap && isDesktop && card.coords ? 0 : undefined}
         >
-          <h2 class="place-card__title">{card.title}</h2>
+          <PlaceCardHeading id={card.id} title={card.title} verified={card.verified} />
           <div class="place-card__city">
             {card.categoryLabel}
             {#if card.cityLabel}

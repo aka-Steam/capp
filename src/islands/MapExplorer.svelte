@@ -1,5 +1,6 @@
 <script lang="ts">
   import MapView from './MapView.svelte';
+  import PlaceCardHeading from './PlaceCardHeading.svelte';
   import { categoryLabels, type MapPlace, type PlaceCardData } from '../lib/poi';
   import type { Category } from '../types';
 
@@ -71,7 +72,7 @@
 
   <aside class="map-explorer__panel" aria-live="polite">
     {#if selected}
-      <h2 class="place-card__title">{selected.title}</h2>
+      <PlaceCardHeading id={selected.id} title={selected.title} verified={selected.verified} />
       <div class="place-card__city">
         {selected.categoryLabel}
         {#if selected.cityLabel}

@@ -27,21 +27,31 @@ export const cityLabels: Record<string, string> = {
   beijing: 'Пекин',
   shanghai: 'Шанхай',
   pingyao: 'Пиньяо',
+  chongqing: 'Чунцин',
   all: 'Все города',
   none: 'Без города',
 };
 
 export const NO_CITY = 'none';
 
+/** Province → city filter key when `cityId` is missing. */
+const PROVINCE_TO_CITY: Record<string, string> = {
+  Chongqing: 'chongqing',
+};
+
 export function cityLabel(cityId?: string, province?: string): string {
-  if (cityId && cityLabels[cityId]) return cityLabels[cityId];
+  const key = cityId || (province ? PROVINCE_TO_CITY[province] : undefined);
+  if (key && cityLabels[key]) return cityLabels[key];
   if (cityId) return cityId;
   if (province) return province;
   return cityLabels[NO_CITY];
 }
 
 export function cityFilterKey(poi: IPoi): string {
-  return poi.location.cityId || NO_CITY;
+  if (poi.location.cityId) return poi.location.cityId;
+  const fromProvince = poi.location.province && PROVINCE_TO_CITY[poi.location.province];
+  if (fromProvince) return fromProvince;
+  return NO_CITY;
 }
 
 export function formatPrice(price?: Price): string | undefined {
@@ -140,6 +150,7 @@ export interface PlaceCardData {
   cover?: NormalizedPhoto;
   href: string;
   coords?: [number, number];
+  verified: boolean;
 }
 
 export function toPlaceCard(poi: IPoi, baseUrl: string): PlaceCardData {
@@ -157,6 +168,7 @@ export function toPlaceCard(poi: IPoi, baseUrl: string): PlaceCardData {
     cover: coverFromMedia(poi.media, baseUrl),
     href: withBase(`/poi/${poi.id}`, baseUrl),
     coords: poiCoords(poi),
+    verified: poi.verified,
   };
 }
 
@@ -181,6 +193,7 @@ export interface HotelCardData {
   hasSingleRoom: boolean;
   currency: string;
   nearbyWalkable: HotelNearbyPlace[];
+  verified: boolean;
 }
 
 export function toHotelCard(
@@ -213,5 +226,6 @@ export function toHotelCard(
       walkMinutes: item.walkMinutes,
       href: withBase(`/poi/${item.ref}`, baseUrl),
     })),
+    verified: hotel.verified,
   };
 }

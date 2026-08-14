@@ -122,10 +122,10 @@
         "category": "attraction",
         "location": {
             "geo": {
-                "lat": 39.916919830162065,
-                "lon": 116.39710470247176,
-                "source": "google",
-                "system": "gcj02"
+                "lat": 39.9174311,
+                "lon": 116.3907817,
+                "source": "osm",
+                "system": "wgs84"
             },
             "cityId": "beijing",
             "province": null,
@@ -274,8 +274,7 @@
             },
             "bookingRequired": false
         },
-        "media": [
-        ],
+        "media": [],
         "links": [
             {
                 "label": "Chinadiscovery Juyongguan",
@@ -418,20 +417,14 @@
         },
         "media": [
             {
-                "id": "76881fac-2532-4bdb-8393-fdf3e7429562",
+                "id": "yu-garden-1",
                 "type": "image",
-                "src": "shanghai/yu-garden.jpg",
-                "preview": null,
-                "caption": "Павильон в саду Юй Юань",
-                "sourceUrl": null
+                "src": "media/yu-garden-1.jpeg"
             },
             {
-                "id": "6b356940-6457-4e4c-88ea-34c934f62753",
+                "id": "yu-garden-1",
                 "type": "image",
-                "src": "https://upload.wikimedia.org/.../Yu_Garden_2023.jpg",
-                "preview": null,
-                "caption": "Живописные дорожки и мосты",
-                "sourceUrl": null
+                "src": "media/yu-garden-2.jpeg"
             }
         ],
         "links": [
@@ -476,7 +469,7 @@
             {
                 "id": "tongli-1",
                 "type": "image",
-                "src": "/media/tongli-1.jpg",
+                "src": "/media/tungli-1.jpg",
                 "preview": null,
                 "caption": "Каналы и старые дома в Тунли",
                 "sourceUrl": null
@@ -517,9 +510,16 @@
             "price": null,
             "bookingRequired": false
         },
-        "media": [
-        ],
+        "media": [{
+            "id": "tianshan-tea-city-1",
+            "type": "image",
+            "src": "/media/tianshan-tea-city-1.jpg"
+        }],
         "links": [
+            {
+                "label": "Статья на Trip.com с рекомендациями по посещению",
+                "url": "https://ru.trip.com/moments/detail/shanghai-2-148185200"
+            },
             {
                 "label": "TripAdvisor — Tianshan Tea City",
                 "url": "https://www.tripadvisor.com/Attraction_Review-g308272-d2312338-Reviews-Tianshan_Tea_City-Shanghai.html"
@@ -610,20 +610,12 @@
         },
         "media": [
             {
-                "id": "f453df8d-e9ee-4667-8f5e-7a2c46d6454a",
+                "id": "pinyao-1",
                 "type": "image",
-                "src": "shanxi/pingyao-ancient-city.jpg",
+                "src": "/media/pinyao-1.jpg",
                 "preview": null,
                 "caption": "Узкие улочки внутри старого города Пинъяо",
-                "sourceUrl": null
-            },
-            {
-                "id": "7ecdbcef-6879-4110-8003-bd93ee823916",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Pingyao_ancient_city_wall.jpg",
-                "preview": null,
-                "caption": "Городская стена Пинъяо",
-                "sourceUrl": null
+                "sourceUrl": "https://wikiway.com/china/pinyao/"
             }
         ],
         "links": [
@@ -669,14 +661,6 @@
             "bookingRequired": false
         },
         "media": [
-            {
-                "id": "21747fb5-914c-457c-b287-d0262f77de51",
-                "type": "image",
-                "src": "shanghai/yu-garden.jpg",
-                "preview": null,
-                "caption": "Базар у сада Юй",
-                "sourceUrl": null
-            }
         ],
         "links": [],
         "createdAt": "2026-08-13T18:50:04.461506+00:00",
@@ -1278,7 +1262,7 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
-        "verified": true
+        "verified": false
     },
     {
         "id": "furong-ancient-town",
@@ -1527,32 +1511,6 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
-        "verified": false
-    },
-    {
-        "id": "xiaolongbao-shanghai",
-        "title": "Сяолунбао (пельмени с бульоном)",
-        "description": "Обязательно попробовать в Шанхае. Осторожно с горячим бульоном внутри.",
-        "category": "restaurant",
-        "theme": "food",
-        "location": {
-            "geo": {
-                "lat": 31.227,
-                "lon": 121.492,
-                "source": "google",
-                "system": "wgs84"
-            },
-            "cityId": "shanghai",
-            "address": "рестораны у Юй-юань",
-            "district": "Хуанпу"
-        },
-        "visit": {
-            "notes": "¥40–80 за порцию. Рядом: yu-garden-bazaar, the-bund"
-        },
-        "media": [],
-        "links": [],
-        "createdAt": "2026-08-14T00:00:00.000Z",
-        "updatedAt": "2026-08-14T00:00:00.000Z",
         "verified": false
     },
     {

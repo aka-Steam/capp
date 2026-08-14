@@ -2,7 +2,9 @@
   import { onMount } from 'svelte';
   import MapView from './MapView.svelte';
   import MapModal from './MapModal.svelte';
-  import { cityLabels, type HotelCardData, type MapPlace } from '../lib/poi';
+  import PlaceCardHeading from './PlaceCardHeading.svelte';
+  import { cityLabels, NO_CITY, type HotelCardData, type MapPlace } from '../lib/poi';
+  import { countLabel, hotelForms } from '../lib/plural';
 
   interface MapConfig {
     tileUrl: string;
@@ -52,7 +54,13 @@
     return () => mq.removeEventListener('change', update);
   });
 
-  const cities = $derived([...new Set(cards.map((c) => c.cityKey))]);
+  const cities = $derived(
+    [...new Set(cards.map((c) => c.cityKey))].sort((a, b) => {
+      if (a === NO_CITY) return 1;
+      if (b === NO_CITY) return -1;
+      return (cityLabels[a] ?? a).localeCompare(cityLabels[b] ?? b, 'ru');
+    }),
+  );
 
   function priceSingleTotal(card: HotelCardData): number {
     const n = effectiveNights();
@@ -221,6 +229,14 @@
   {/each}
 </div>
 
+<p class="list-count" aria-live="polite">
+  {#if filteredCards.length === cards.length}
+    Всего {countLabel(cards.length, hotelForms)}
+  {:else}
+    Показано {countLabel(filteredCards.length, hotelForms)} из {cards.length}
+  {/if}
+</p>
+
 <div
   class="info-page-layout"
   class:info-page-layout--with-map={showMap && isDesktop}
@@ -243,7 +259,7 @@
           role={showMap && isDesktop && card.coords ? 'button' : undefined}
           tabindex={showMap && isDesktop && card.coords ? 0 : undefined}
         >
-          <h2 class="place-card__title">{card.title}</h2>
+          <PlaceCardHeading id={card.id} title={card.title} verified={card.verified} />
           {#if card.cityLabel}
             <div class="place-card__city">{card.cityLabel}</div>
           {/if}
