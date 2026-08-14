@@ -65,7 +65,7 @@ const themeSchema = z.enum([
 const coordinatesSchema = z.object({
   lat: z.number(),
   lon: z.number(),
-  source: z.enum(['google', 'yandex']).optional(),
+  source: z.enum(['google', 'yandex', 'osm']).optional(),
   system: z.enum(['wgs84', 'gcj02', 'bd09']).optional(),
 });
 

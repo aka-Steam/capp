@@ -60,6 +60,22 @@
     });
   }
 
+  function loadStylesheet(href: string): Promise<HTMLLinkElement> {
+    return new Promise((resolve, reject) => {
+      const existing = document.head.querySelector<HTMLLinkElement>(`link[href="${href}"]`);
+      if (existing) {
+        resolve(existing);
+        return;
+      }
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.onload = () => resolve(link);
+      link.onerror = () => resolve(link);
+      document.head.appendChild(link);
+    });
+  }
+
   function applyMarkerStyles() {
     if (!map) return;
     const activeId = focusedId ?? highlightedId;
@@ -153,15 +169,8 @@
   onMount(async () => {
     LRef = await import('leaflet');
 
-    leafletLink = document.createElement('link');
-    leafletLink.rel = 'stylesheet';
-    leafletLink.href = `${leafletBase}leaflet.css`;
-    document.head.appendChild(leafletLink);
-
-    measureLink = document.createElement('link');
-    measureLink.rel = 'stylesheet';
-    measureLink.href = `${measureBase}leaflet-measure.css`;
-    document.head.appendChild(measureLink);
+    leafletLink = await loadStylesheet(`${leafletBase}leaflet.css`);
+    measureLink = await loadStylesheet(`${measureBase}leaflet-measure.css`);
 
     (window as Window & { L?: typeof Leaflet }).L = LRef;
     await loadScript(`${measureBase}leaflet-measure.ru.js`);
@@ -197,6 +206,7 @@
     });
 
     rebuildMarkers();
+    requestAnimationFrame(() => map?.invalidateSize());
 
     const ro = new ResizeObserver(() => {
       map?.invalidateSize();
@@ -243,7 +253,8 @@
 
 <div
   class={['map-panel', variant === 'modal' && 'map-panel--modal', variant === 'explorer' && 'map-panel--explorer']}
-  bind:this={container}
   role="application"
   aria-label="Карта мест"
-></div>
+>
+  <div class="map-panel__canvas" bind:this={container}></div>
+</div>

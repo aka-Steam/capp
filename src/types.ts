@@ -32,7 +32,7 @@ export type Theme =
 export type Coordinates = {
   lat: number;
   lon: number;
-  source?: 'google' | 'yandex';
+  source?: 'google' | 'yandex' | 'osm';
   system?: 'wgs84' | 'gcj02' | 'bd09';
 };
 

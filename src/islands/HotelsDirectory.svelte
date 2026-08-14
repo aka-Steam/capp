@@ -153,15 +153,10 @@
   }
 
   function onCardClick(id: string) {
-    if (!showMap) return;
-    if (isDesktop) {
-      focusedId = id;
-      highlightedId = id;
-      mapRef?.invalidate();
-    } else {
-      mapModalPlaceId = id;
-      mapModalOpen = true;
-    }
+    if (!showMap || !isDesktop) return;
+    focusedId = id;
+    highlightedId = id;
+    mapRef?.invalidate();
   }
 
   function openMapModal(id: string, e: MouseEvent) {
@@ -238,15 +233,15 @@
         <article
           class="place-card"
           class:place-card--highlight={focusedId === card.id || highlightedId === card.id}
-          class:place-card--clickable={showMap && !!card.coords}
+          class:place-card--clickable={showMap && isDesktop && !!card.coords}
           id={`place-${card.id}`}
           data-place-id={card.id}
           onmouseenter={() => onCardEnter(card.id)}
           onmouseleave={onCardLeave}
           onclick={() => onCardClick(card.id)}
           onkeydown={(e) => e.key === 'Enter' && onCardClick(card.id)}
-          role={showMap && card.coords ? 'button' : undefined}
-          tabindex={showMap && card.coords ? 0 : undefined}
+          role={showMap && isDesktop && card.coords ? 'button' : undefined}
+          tabindex={showMap && isDesktop && card.coords ? 0 : undefined}
         >
           <h2 class="place-card__title">{card.title}</h2>
           {#if card.cityLabel}
