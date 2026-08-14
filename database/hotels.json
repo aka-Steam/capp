@@ -1,21 +1,21 @@
 [
   {
     "id": "rotating-breakfast-shanghai",
-    "title": "Вращающийся ресторан с завтраком (отель, вид на Шанхай)",
-    "description": "Отель с завтраком в ресторане, который медленно вращается, открывая панораму Шанхая. Точное название и адрес не указаны в источнике (автор упоминает, что оставил их в закрепе).",
+    "title": "Novotel Atlantis",
+    "description": "Novotel Atlantis Отель с завтраком в ресторане, который медленно вращается, открывая панораму Шанхая. Точное название и адрес не указаны в источнике (автор упоминает, что оставил их в закрепе).",
     "category": "hotel",
     "kind": null,
     "theme": "food",
     "location": {
       "geo": {
-        "lat": null,
-        "lon": null,
-        "system": null
+        "lat": 31.2409754, 
+        "lon": 121.5205264,
+        "source": "osm",
+        "system": "wgs84"
       },
-      "cityId": null,
+      "cityId": "shanghai",
       "province": "Shanghai",
-      "address": null,
-      "district": null
+      "address": "728 Pu Dong Avenue, Shanghai 上海市浦东新区浦东大道728号"
     },
     "visit": {
       "durationMin": null,
@@ -23,7 +23,11 @@
       "price": null,
       "bookingRequired": null
     },
-    "media": [],
+    "media": [{
+      "id": "rotating-breakfast-shanghai-1",
+      "type": "image",
+      "src": "/media/rotating-breakfast-shanghai-1.png"
+    }],
     "links": [
       {
         "label": "Instagram Reel",
@@ -102,94 +106,6 @@
         {
           "ref": "forbidden-city",
           "walkMinutes": 33
-        }
-      ]
-    },
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  },
-  {
-    "id": "hotel-demo-shanghai",
-    "title": "Demo  (пример A)",
-    "description": "У Бунда, удобно для вечерних прогулок.",
-    "category": "hotel",
-    "location": {
-      "geo": {
-        "lat": 31.233,
-        "lon": 121.485,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "shanghai",
-      "address": "Near The Bund",
-      "district": "Хуанпу"
-    },
-    "visit": {},
-    "media": [],
-    "links": [
-      {
-        "label": "Trip.com",
-        "url": "https://www.trip.com/hotels/shanghai"
-      }
-    ],
-    "stay": {
-      "priceSingle": 480,
-      "priceDouble": 560,
-      "hasSingleRoom": true,
-      "currency": "CNY",
-      "nearbyWalkable": [
-        {
-          "ref": "the-bund",
-          "walkMinutes": 12
-        },
-        {
-          "ref": "yu-garden-bazaar",
-          "walkMinutes": 28
-        }
-      ]
-    },
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  },
-  {
-    "id": "hotel-demo-shanghai-b",
-    "title": "Demo  (пример B)",
-    "description": "Ближе к саду Юй и базару.",
-    "category": "hotel",
-    "location": {
-      "geo": {
-        "lat": 31.228,
-        "lon": 121.49,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "shanghai",
-      "address": "Near Yu Garden",
-      "district": "Хуанпу"
-    },
-    "visit": {},
-    "media": [],
-    "links": [
-      {
-        "label": "Trip.com",
-        "url": "https://www.trip.com/hotels/shanghai"
-      }
-    ],
-    "stay": {
-      "priceSingle": 420,
-      "priceDouble": 490,
-      "hasSingleRoom": true,
-      "currency": "CNY",
-      "nearbyWalkable": [
-        {
-          "ref": "yu-garden-bazaar",
-          "walkMinutes": 8
-        },
-        {
-          "ref": "the-bund",
-          "walkMinutes": 30
         }
       ]
     },

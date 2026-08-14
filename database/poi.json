@@ -1,6 +1,40 @@
 [
     {
         "id": "universal-beijing",
+        "title": "Пивная биржа",
+        "description": "Скорее всего работает только по вечерам, судя по комментарию в рилсе",
+        "category": "cafe",
+        "location": {
+            "geo": {
+                "lat": 39.9085088,
+                "lon": 116.4052000,
+                "source": "osm",
+                "system": "wgs84"
+            },
+            "cityId": "beijing"
+        },
+        "visit": {
+            "notes": "📍Wangfujing Street, рядом с магазином Nike"
+        },
+        "media": [
+            {
+                "id": "beer-stock-1",
+                "type": "image",
+                "src": "/media/beer-stock-1.png"
+            }
+        ],
+        "links": [
+            {
+                "label": "Instagram Reel",
+                "url": "https://www.instagram.com/reel/Db584_FotSF/?igsh=MWJ2NmZvYnVvcWpvYw%3D%3D"
+            }
+        ],
+        "createdAt": "2026-08-13T18:50:04.461506+00:00",
+        "updatedAt": "2026-08-13T18:50:04.461506+00:00",
+        "verified": true
+    },
+    {
+        "id": "universal-beijing",
         "title": "Парк Universal Studios (Пекин)",
         "description": "Крупный тематический парк с аттракционами по мирам Illumination, DreamWorks, Universal и др. Лучше идти по будням.",
         "category": "attraction",
@@ -133,13 +167,11 @@
         "title": "Площадь Тяньаньмэнь",
         "description": "Одна из крупнейших городских площадей мира, центр политической и исторической жизни Китая. С утра ищите очередь на вход в Музей Китая и Мавзолей Мао.",
         "category": "attraction",
-        "kind": "historical-site",
-        "theme": "history",
         "location": {
             "geo": {
-                "lat": 39.9042,
-                "lon": 116.3939,
-                "source": "google",
+                "lat": 39.9056522,
+                "lon": 116.3913000,
+                "source": "osm",
                 "system": "wgs84"
             },
             "cityId": "beijing",
@@ -150,10 +182,20 @@
         "visit": {
             "durationMin": 45,
             "openingHours": "5:00 - 22:00",
-            "price": null,
+            "price": {
+                "amount": 0,
+                "currency": "CNY",
+                "approximate": true
+            },
             "bookingRequired": false
         },
-        "media": [],
+        "media": [
+            {
+                "id": "tiananmen-square-1",
+                "type": "image",
+                "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/200401-beijing-tianan-square-overview.jpg?utm_source=ru.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+            }
+        ],
         "links": [
             {
                 "label": "Travel China Guide",
@@ -162,60 +204,47 @@
         ],
         "createdAt": "2026-08-13T18:50:04.461506+00:00",
         "updatedAt": "2026-08-13T18:50:04.461506+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "zhongguancun",
         "title": "Чжунгуаньцунь — китайская Кремниевая долина",
-        "description": "Технопарк с стартап‑офисами, IT‑ретейлом и университетами. Интересен в основном как прогулка по современному китайскому IT‑центру.",
+        "description": "Крупный технологический и научный центр в районе Хайдянь на северо-западе Пекина. Технопарк с стартап‑офисами, IT‑ретейлом и университетами. Интересен в основном как прогулка по современному китайскому IT‑центру.",
         "category": "attraction",
-        "kind": "historical-site",
-        "theme": "culture",
         "location": {
             "geo": {
-                "lat": 39.9832,
-                "lon": 116.3155,
-                "source": "google",
+                "lat": 39.9826574,
+                "lon": 116.3103787,
+                "source": "osm",
                 "system": "wgs84"
             },
             "cityId": "beijing",
-            "province": null,
-            "address": "Zhongguancun Avenue, Haidian District",
-            "district": "Хайдэнь"
+            "province": null
         },
         "visit": {
-            "durationMin": 120,
             "openingHours": "24/7",
             "price": null,
             "bookingRequired": false
         },
         "media": [
             {
-                "id": "1851278c-93ce-4070-a04e-781d214c62ce",
+                "id": "zhongguancun-1",
                 "type": "image",
-                "src": "beijing/zhongguancun.jpg",
+                "src": "/media/zhongguancun-1.webp",
                 "preview": null,
                 "caption": "Улица в Чжунгуаньцуне",
-                "sourceUrl": null
-            },
-            {
-                "id": "d49a7ac1-bc2e-4d02-92b2-6d8998006b83",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Zhongguancun_Avenue.jpg",
-                "preview": null,
-                "caption": "Бизнес‑квартал в Пекине",
                 "sourceUrl": null
             }
         ],
         "links": [
             {
-                "label": "О районе",
-                "url": "https://en.wikipedia.org/wiki/Zhongguancun"
+                "label": "О районе Wiki",
+                "url": "https://ru.wikipedia.org/wiki/Чжунгуаньцунь"
             }
         ],
         "createdAt": "2026-08-13T18:50:04.461506+00:00",
         "updatedAt": "2026-08-13T18:50:04.461506+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "great-wall-juyongguan",
@@ -246,22 +275,6 @@
             "bookingRequired": false
         },
         "media": [
-            {
-                "id": "675a7437-bc83-446e-8201-e11ca9a46496",
-                "type": "image",
-                "src": "beijing/great-wall-juyongguan.jpg",
-                "preview": null,
-                "caption": "Стена в районе Цзюйюнгуань",
-                "sourceUrl": null
-            },
-            {
-                "id": "a7824539-fd21-4562-ba99-c5638e73cc0b",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Juyongguan_Great_Wall.jpg",
-                "preview": null,
-                "caption": "Вид на горы и стену",
-                "sourceUrl": null
-            }
         ],
         "links": [
             {
@@ -276,58 +289,48 @@
     {
         "id": "great-wall-simatai",
         "title": "Великая китайская стена, участок Сыматай",
-        "description": "Живописный и относительно менее туристический участок в горах, часто комбинируется с посещением Губэйшуйчэнь (световое шоу по ночам).",
+        "description": "Живописный и относительно менее туристический участок в горах, часто комбинируется с посещением Губэйшуйчэнь (световое шоу по ночам).  Это один из немногих участков, сохранивших первоначальный вид со времён династии Мин. Рядом есть водный город",
         "category": "attraction",
-        "kind": "wall-section",
-        "theme": "history",
         "location": {
             "geo": {
-                "lat": 40.6542,
-                "lon": 117.1122,
-                "source": "google",
+                "lat": 40.6446620,
+                "lon": 117.2617746,
+                "source": "osm",
                 "system": "wgs84"
             },
             "cityId": "beijing",
-            "province": null,
-            "address": "Simatai Village, GuBei Water Town, Miyun District",
-            "district": "Миюнь"
+            "province": null
         },
         "visit": {
-            "durationMin": 300,
-            "openingHours": "08:00–17:00 (ночной осмотр в гостевом городе)",
+            "durationMin": 180,
+            "openingHours": "09:00–23:00 (ночной осмотр в гостевом городе)",
             "price": {
-                "amount": 40,
-                "currency": "CNY"
+                "amount": 200,
+                "currency": "CNY",
+                "approximate": false,
+                "notes": "вход на стену  + канатная дорога в обе стороны. Вход на водный город буд стоить еще +100 примерно"
             },
             "bookingRequired": false
         },
         "media": [
             {
-                "id": "a512957d-bfaa-4dca-9520-faa79582c793",
+                "id": "simatai-great-wall-1",
                 "type": "image",
-                "src": "beijing/great-wall-simatai.jpg",
+                "src": "/media/Simatai-Great-Wall-Night-Tour.webp",
                 "preview": null,
                 "caption": "Стена Сыматай по ночам",
-                "sourceUrl": null
-            },
-            {
-                "id": "beac385b-ea6c-4c11-b0fe-cee93c79008b",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Simatai_Great_Wall_night.jpg",
-                "preview": null,
-                "caption": "Подсвеченная стена в Губэйшуйчэнь",
                 "sourceUrl": null
             }
         ],
         "links": [
             {
                 "label": "Chinadiscovery Simatai",
-                "url": "https://www.chinadiscovery.com/beijing-tours/maps/simatai-great-wall-maps.html"
+                "url": "https://www.chinaxiantour.com/simatai-great-wall.html"
             }
         ],
         "createdAt": "2026-08-13T18:50:04.461506+00:00",
         "updatedAt": "2026-08-13T18:50:04.461506+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "the-bund",
@@ -471,19 +474,11 @@
         },
         "media": [
             {
-                "id": "7539a35e-85b4-48f4-8984-da75f3cd972a",
+                "id": "tongli-1",
                 "type": "image",
-                "src": "suzhou/tongli.jpg",
+                "src": "/media/tongli-1.jpg",
                 "preview": null,
                 "caption": "Каналы и старые дома в Тунли",
-                "sourceUrl": null
-            },
-            {
-                "id": "358c76ff-fdeb-4016-a7d1-e8a839239bc6",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Tongli_ancient_town_water.jpg",
-                "preview": null,
-                "caption": "Водный город Тунли",
                 "sourceUrl": null
             }
         ],
@@ -523,22 +518,6 @@
             "bookingRequired": false
         },
         "media": [
-            {
-                "id": "ebdeb8c6-4a1f-48b4-9f17-a507deaa756a",
-                "type": "image",
-                "src": "shanghai/tea-market.jpg",
-                "preview": null,
-                "caption": "Столики с чаем в Тяньшань Ча‑Сити",
-                "sourceUrl": null
-            },
-            {
-                "id": "108b0095-1503-477b-8cec-b7a9215a6d0a",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Tea_Market_interior.jpg",
-                "preview": null,
-                "caption": "Интерьер чайного рынка",
-                "sourceUrl": null
-            }
         ],
         "links": [
             {
@@ -565,34 +544,25 @@
                 "system": "wgs84"
             },
             "cityId": "shanghai",
-            "province": null,
-            "address": "753 North Shendi Road, Chuansha, Pudong",
-            "district": "Пудун"
+            "province": null
         },
         "visit": {
             "durationMin": 480,
-            "openingHours": "09:00–21:00 (по сезону)",
+            "openingHours": "08:30–20:30; зависит от сезона",
             "price": {
-                "amount": 438,
-                "currency": "CNY"
+                "amount": 870,
+                "currency": "CNY",
+                "approximate": true
             },
             "bookingRequired": true
         },
         "media": [
             {
-                "id": "5b47e007-7e8e-4620-95db-e63cfc85cd22",
+                "id": "shanghai-disneyland-1",
                 "type": "image",
-                "src": "shanghai/disneyland.jpg",
+                "src": "/media/shanghai-disneyland-1.webp",
                 "preview": null,
                 "caption": "Ключевой замок Диснейленда Шанхая",
-                "sourceUrl": null
-            },
-            {
-                "id": "5b8080b7-cb32-47e9-8f46-c8ccf119614f",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../Shanghai_Disneyland_castle.jpg",
-                "preview": null,
-                "caption": "Вечернее шоу у замка",
                 "sourceUrl": null
             }
         ],
@@ -600,6 +570,10 @@
             {
                 "label": "Официальный сайт",
                 "url": "https://www.shanghaidisneyresort.com/"
+            },
+            {
+                "label": "Какая-то статья",
+                "url": "https://shanghaiparkguide.com/ru/plan/"
             }
         ],
         "createdAt": "2026-08-13T18:50:04.461506+00:00",
@@ -946,29 +920,31 @@
     {
         "id": "richuchu-coffee-yangshuo",
         "title": "Richuchu Coffee",
-        "description": "Кофейня в Яншо (Yangshuo), упомянута в подборке эстетичных локаций Китая.",
+        "description": " Кафе с видом на карстовые пейзажи Яншо",
         "category": "cafe",
-        "kind": null,
-        "theme": "food",
         "location": {
             "geo": {
-                "lat": null,
-                "lon": null,
-                "system": null
+                "lat": 24.779430,
+                "lon": 110.489196,
+                "source": "yandex"
             },
             "cityId": null,
-            "province": "Guangxi",
-            "address": "Yangshuo, China",
+            "address": "No. 12, Dalingtou, Yangshuo",
             "district": null
         },
-        "visit": {
-            "durationMin": null,
-            "openingHours": null,
-            "price": null,
-            "bookingRequired": null
-        },
-        "media": [],
+        "visit": {},
+        "media": [
+            {
+                "id": "richuchu-coffee-yangshuo-1",
+                "type": "image",
+                "src": "media/richuchu-coffee-yangshuo-1.png"
+            }
+        ],
         "links": [
+            {
+                "label": "статья в вк",
+                "url": "https://vk.com/wall-222165158_13025?w=wall-222165158_13025"
+            },
             {
                 "label": "Instagram Reel",
                 "url": "https://www.instagram.com/reel/DY_LFt2p39c/"
@@ -976,7 +952,7 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "taste-of-china-shanghai",
@@ -1266,8 +1242,6 @@
         "title": "黄玉明烤肉·听民谣看夜景 (кафе с видом на мост)",
         "description": "Кафе-барбекю в Чунцине с видом на мост и город, живая музыка, шоу дронов по субботам в 20:30. Комплексное меню на двоих от 266 юаней. Приходить лучше к 18:00-19:00.",
         "category": "restaurant",
-        "kind": null,
-        "theme": "food",
         "location": {
             "geo": {
                 "lat": null,
@@ -1280,15 +1254,22 @@
             "district": null
         },
         "visit": {
-            "durationMin": 120,
-            "openingHours": "18:00-21:00 (шоу дронов сб 20:30)",
+            "durationMin": 90,
             "price": {
                 "amount": 266,
-                "currency": "CNY"
+                "currency": "CNY",
+                "approximate": true,
+                "notes": "(шоу дронов сб 20:30)"
             },
             "bookingRequired": null
         },
-        "media": [],
+        "media": [
+            {
+                "id": "huang-yuming-bbq-chongqing-media-1",
+                "type": "image",
+                "src": "media/huang-yuming-bbq-chongqing-1.png"
+            }
+        ],
         "links": [
             {
                 "label": "Instagram Reel",
@@ -1297,7 +1278,7 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "furong-ancient-town",
@@ -1547,110 +1528,65 @@
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
         "verified": false
-  },
-  {
-    "id": "jianbing-beijing",
-    "title": "Цзяньбин (блин с начинкой)",
-    "description": "Популярный завтрак: хрустящий блин, яйцо, соус, зелень.",
-    "category": "restaurant",
-    "theme": "food",
-    "location": {
-      "geo": {
-        "lat": 39.914,
-        "lon": 116.404,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "beijing",
-      "address": "уличные ларьки у метро",
-      "district": "Дунчэн"
     },
-    "visit": {
-      "notes": "¥8–15. Рядом: forbidden-city, hotel-demo-beijing"
+    {
+        "id": "xiaolongbao-shanghai",
+        "title": "Сяолунбао (пельмени с бульоном)",
+        "description": "Обязательно попробовать в Шанхае. Осторожно с горячим бульоном внутри.",
+        "category": "restaurant",
+        "theme": "food",
+        "location": {
+            "geo": {
+                "lat": 31.227,
+                "lon": 121.492,
+                "source": "google",
+                "system": "wgs84"
+            },
+            "cityId": "shanghai",
+            "address": "рестораны у Юй-юань",
+            "district": "Хуанпу"
+        },
+        "visit": {
+            "notes": "¥40–80 за порцию. Рядом: yu-garden-bazaar, the-bund"
+        },
+        "media": [],
+        "links": [],
+        "createdAt": "2026-08-14T00:00:00.000Z",
+        "updatedAt": "2026-08-14T00:00:00.000Z",
+        "verified": false
     },
-    "media": [],
-    "links": [],
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  },
-  {
-    "id": "peking-duck-beijing",
-    "title": "Пекинская утка",
-    "description": "Блюдо на компанию; бронируйте заранее в популярных местах.",
-    "category": "restaurant",
-    "theme": "food",
-    "location": {
-      "geo": {
-        "lat": 39.908,
-        "lon": 116.397,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "beijing",
-      "address": "рестораны у Тяньаньмэнь",
-      "district": "Дунчэн"
-    },
-    "visit": {
-      "notes": "¥150–300. Рядом: forbidden-city",
-      "bookingRequired": true
-    },
-    "media": [],
-    "links": [],
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  },
-  {
-    "id": "xiaolongbao-shanghai",
-    "title": "Сяолунбао (пельмени с бульоном)",
-    "description": "Обязательно попробовать в Шанхае. Осторожно с горячим бульоном внутри.",
-    "category": "restaurant",
-    "theme": "food",
-    "location": {
-      "geo": {
-        "lat": 31.227,
-        "lon": 121.492,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "shanghai",
-      "address": "рестораны у Юй-юань",
-      "district": "Хуанпу"
-    },
-    "visit": {
-      "notes": "¥40–80 за порцию. Рядом: yu-garden-bazaar, the-bund"
-    },
-    "media": [],
-    "links": [],
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  },
-  {
-    "id": "familiar-cafe-shanghai",
-    "title": "Кофейня / западная кухня (пример)",
-    "description": "Заготовка под место с привычной едой — замените на проверенный вариант.",
-    "category": "cafe",
-    "theme": "food",
-    "location": {
-      "geo": {
-        "lat": 31.234,
-        "lon": 121.475,
-        "source": "google",
-        "system": "wgs84"
-      },
-      "cityId": "shanghai",
-      "address": "район Нанцзин Road",
-      "district": "Хуанпу"
-    },
-    "visit": {
-      "notes": "¥50–100. Рядом: the-bund"
-    },
-    "media": [],
-    "links": [],
-    "createdAt": "2026-08-14T00:00:00.000Z",
-    "updatedAt": "2026-08-14T00:00:00.000Z",
-    "verified": true
-  }
+    {
+        "id": "rotating-breakfast-shanghai",
+        "title": "ресторан ART",
+        "description": "Ресторан на 50 этаже в Novotel Atlantis",
+        "category": "restaurant",
+        "location": {
+            "geo": {
+                "lat": 31.2409754,
+                "lon": 121.5205264,
+                "source": "osm",
+                "system": "wgs84"
+            },
+            "cityId": "shanghai",
+            "province": "Shanghai",
+            "address": "728 Pu Dong Avenue, Shanghai上海市浦东新区浦东大道728号"
+        },
+        "visit": {},
+        "media": [
+            {
+                "id": "rotating-breakfast-shanghai-1",
+                "type": "image",
+                "src": "/media/rotating-breakfast-shanghai-1.png"
+            }
+        ],
+        "links": [
+            {
+                "label": "Instagram Reel",
+                "url": "https://www.instagram.com/reel/DZXnblKs_bD/"
+            }
+        ],
+        "createdAt": "2026-08-13T04:59:31.207657+00:00",
+        "updatedAt": "2026-08-13T04:59:31.207657+00:00",
+        "verified": true
+    }
 ]
