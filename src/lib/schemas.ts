@@ -27,6 +27,7 @@ export const categorySchema = z.enum([
   'station',
   'airport',
   'meeting_point',
+  'bar',
 ]);
 
 export const poiCategorySchema = z.enum([
@@ -37,6 +38,7 @@ export const poiCategorySchema = z.enum([
   'station',
   'airport',
   'meeting_point',
+  'bar',
 ]);
 
 const attractionKindSchema = z.enum([

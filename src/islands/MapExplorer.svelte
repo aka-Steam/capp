@@ -72,7 +72,7 @@
 
   <aside class="map-explorer__panel" aria-live="polite">
     {#if selected}
-      <PlaceCardHeading id={selected.id} title={selected.title} verified={selected.verified} />
+      <PlaceCardHeading id={selected.id} title={selected.title} verified={selected.verified} isNew={selected.isNew} />
       <div class="place-card__city">
         {selected.categoryLabel}
         {#if selected.cityLabel}

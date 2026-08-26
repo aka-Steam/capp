@@ -1,5 +1,6 @@
 import type { Category, IHotel, IPoi, MediaItem, Price } from '../types';
 import { withBase } from './config';
+import { isNewPoi } from './labels';
 
 export const categoryLabels: Record<Category, string> = {
   attraction: 'Достопримечательность',
@@ -10,6 +11,7 @@ export const categoryLabels: Record<Category, string> = {
   station: 'Вокзал',
   airport: 'Аэропорт',
   meeting_point: 'Место встречи',
+  bar: 'Бар',
 };
 
 export const categoryColors: Record<Category, string> = {
@@ -21,6 +23,7 @@ export const categoryColors: Record<Category, string> = {
   station: '#475569',
   airport: '#0f766e',
   meeting_point: '#059669',
+  bar: '#be185d',
 };
 
 export const cityLabels: Record<string, string> = {
@@ -110,7 +113,8 @@ export interface NormalizedMedia {
 export function resolveMediaUrl(src: string | undefined, baseUrl: string): string | undefined {
   if (!src) return undefined;
   if (/^https?:\/\//i.test(src)) return src;
-  const path = src.startsWith('/') ? src : `/media/${src}`;
+  const trimmed = src.replace(/^\/+/, '');
+  const path = trimmed.startsWith('media/') ? `/${trimmed}` : `/media/${trimmed}`;
   return withBase(path, baseUrl);
 }
 
@@ -151,6 +155,7 @@ export interface PlaceCardData {
   href: string;
   coords?: [number, number];
   verified: boolean;
+  isNew: boolean;
 }
 
 export function toPlaceCard(poi: IPoi, baseUrl: string): PlaceCardData {
@@ -169,6 +174,7 @@ export function toPlaceCard(poi: IPoi, baseUrl: string): PlaceCardData {
     href: withBase(`/poi/${poi.id}`, baseUrl),
     coords: poiCoords(poi),
     verified: poi.verified,
+    isNew: isNewPoi(poi.id),
   };
 }
 
@@ -194,6 +200,7 @@ export interface HotelCardData {
   currency: string;
   nearbyWalkable: HotelNearbyPlace[];
   verified: boolean;
+  isNew: boolean;
 }
 
 export function toHotelCard(
@@ -227,5 +234,6 @@ export function toHotelCard(
       href: withBase(`/poi/${item.ref}`, baseUrl),
     })),
     verified: hotel.verified,
+    isNew: isNewPoi(hotel.id),
   };
 }

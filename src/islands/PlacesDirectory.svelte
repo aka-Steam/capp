@@ -159,7 +159,7 @@
           role={showMap && isDesktop && card.coords ? 'button' : undefined}
           tabindex={showMap && isDesktop && card.coords ? 0 : undefined}
         >
-          <PlaceCardHeading id={card.id} title={card.title} verified={card.verified} />
+          <PlaceCardHeading id={card.id} title={card.title} verified={card.verified} isNew={card.isNew} />
           <div class="place-card__city">
             {card.categoryLabel}
             {#if card.cityLabel}

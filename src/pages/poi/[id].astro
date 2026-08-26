@@ -3,7 +3,9 @@ import AppLayout from '../../layouts/AppLayout.astro';
 import MapView from '../../islands/MapView.svelte';
 import MediaSlider from '../../islands/MediaSlider.svelte';
 import FavoriteButton from '../../islands/FavoriteButton.svelte';
+import NewBadge from '../../islands/NewBadge.svelte';
 import VerifiedBadge from '../../islands/VerifiedBadge.svelte';
+import { isNewPoi } from '../../lib/labels';
 import { getCollection, getEntry } from 'astro:content';
 import { leafletAssets } from '../../lib/mapAssets';
 import {
@@ -64,6 +66,7 @@ const stay = hotel?.stay;
     </p>
     <h1 class="poi-detail__title">
       {poi.title}
+      {isNewPoi(poi.id) && <NewBadge />}
       {poi.verified && <VerifiedBadge />}
       <FavoriteButton client:load id={poi.id} />
     </h1>

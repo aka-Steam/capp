@@ -367,14 +367,6 @@
                 "preview": null,
                 "caption": "Набережная Бунд вечером",
                 "sourceUrl": null
-            },
-            {
-                "id": "67dcbb2a-430f-4c2e-9b1d-e32c27d9cd56",
-                "type": "image",
-                "src": "https://upload.wikimedia.org/.../The_Bund_2023.jpg",
-                "preview": null,
-                "caption": "Вид на небоскрёбы Пудун",
-                "sourceUrl": null
             }
         ],
         "links": [
@@ -419,12 +411,12 @@
             {
                 "id": "yu-garden-1",
                 "type": "image",
-                "src": "media/yu-garden-1.jpeg"
+                "src": "/media/yu-garden-1.jpeg"
             },
             {
-                "id": "yu-garden-1",
+                "id": "yu-garden-2",
                 "type": "image",
-                "src": "media/yu-garden-2.jpeg"
+                "src": "/media/yu-garden-2.jpg"
             }
         ],
         "links": [
@@ -772,7 +764,7 @@
                 "source": "google",
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Jiangxi"
         },
         "visit": {
@@ -841,7 +833,7 @@
                 "lon": 121.519,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Yangpu District, Shanghai",
             "district": "Yangpu"
@@ -876,7 +868,7 @@
                 "lon": 106.58,
                 "system": "gcj02"
             },
-            "cityId": null,
+            "cityId": "chongqing",
             "province": "Chongqing",
             "address": "South Bank District (Nan'an), Chongqing",
             "district": "Nan'an"
@@ -921,7 +913,7 @@
             {
                 "id": "richuchu-coffee-yangshuo-1",
                 "type": "image",
-                "src": "media/richuchu-coffee-yangshuo-1.png"
+                "src": "/media/richuchu-coffee-yangshuo-1.png"
             }
         ],
         "links": [
@@ -951,7 +943,7 @@
                 "lon": null,
                 "system": null
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Henan Middle Road No.270 F1, Shanghai",
             "district": null
@@ -986,7 +978,7 @@
                 "lon": 120.1551,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Zhejiang",
             "address": "Hangzhou, China",
             "district": null
@@ -1021,7 +1013,7 @@
                 "lon": 121.4805,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Brilliance Shimao International Plaza, No. 829 Nanjing East Road, Huangpu District, Shanghai",
             "district": "Huangpu"
@@ -1056,7 +1048,7 @@
                 "lon": 121.92239,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "No. 380, Lingang Avenue, Pudong New Area, Shanghai",
             "district": "Pudong"
@@ -1094,7 +1086,7 @@
                 "lon": null,
                 "system": null
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "The Nord Bund, Shanghai",
             "district": null
@@ -1164,7 +1156,7 @@
                 "lon": null,
                 "system": null
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": null,
             "district": null
@@ -1199,7 +1191,7 @@
                 "lon": 106.44321,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "chongqing",
             "province": "Chongqing",
             "address": "No. 999 Jinbizheng Street, Shapingba District, Chongqing",
             "district": "Shapingba"
@@ -1232,7 +1224,7 @@
                 "lon": null,
                 "system": null
             },
-            "cityId": null,
+            "cityId": "chongqing",
             "province": "Chongqing",
             "address": "Chongqing, China",
             "district": null
@@ -1251,7 +1243,7 @@
             {
                 "id": "huang-yuming-bbq-chongqing-media-1",
                 "type": "image",
-                "src": "media/huang-yuming-bbq-chongqing-1.png"
+                "src": "/media/huang-yuming-bbq-chongqing-1.png"
             }
         ],
         "links": [
@@ -1316,7 +1308,7 @@
                 "lon": 106.574,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "chongqing",
             "province": "Chongqing",
             "address": "Nanbin Road, Chongqing",
             "district": null
@@ -1351,7 +1343,7 @@
                 "lon": null,
                 "system": null
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": null,
             "district": null
@@ -1375,18 +1367,17 @@
     },
     {
         "id": "minhang-district-location-shanghai",
-        "title": "Локация в районе Минхан (Minhang), Шанхай",
+        "title": "Шанхайский международный ювелирный центр",
         "description": "Место в Шанхае с указанным адресом, но без названия в источнике. Ближайшее метро — станция Luheng Road, линия 8, выход 2 или 5.",
         "category": "attraction",
-        "kind": null,
-        "theme": "scenic",
         "location": {
             "geo": {
-                "lat": null,
-                "lon": null,
+                "lat": 31.105674, 
+                "lon": 121.498759,
+                "source": "yandex",
                 "system": null
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Building 6, Lane 567, Puxing Highway, Minhang District, Shanghai",
             "district": "Minhang"
@@ -1397,7 +1388,18 @@
             "price": null,
             "bookingRequired": null
         },
-        "media": [],
+        "media": [
+            {
+                "id": "shanhai-dvorec-1",
+                "type": "image",
+                "src": "/media/shanhai-dvorec-1.jpg"
+            },
+            {
+                "id": "shanhai-dvorec-v1",
+                "type": "video",
+                "src": "/media/shanhai-dvorec-v1.mp4"
+            }
+        ],
         "links": [
             {
                 "label": "Instagram Reel",
@@ -1406,7 +1408,7 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
-        "verified": false
+        "verified": true
     },
     {
         "id": "ten-mile-gallery-yangshuo",
@@ -1456,7 +1458,7 @@
                 "lon": 121.5054,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Pudong, Shanghai",
             "district": "Pudong"
@@ -1491,7 +1493,7 @@
                 "lon": 121.4762,
                 "system": "wgs84"
             },
-            "cityId": null,
+            "cityId": "shanghai",
             "province": "Shanghai",
             "address": "Nanjing Road, Huangpu District, Shanghai",
             "district": "Huangpu"
@@ -1545,6 +1547,40 @@
         ],
         "createdAt": "2026-08-13T04:59:31.207657+00:00",
         "updatedAt": "2026-08-13T04:59:31.207657+00:00",
+        "verified": true
+    },
+    {
+        "id": "kev-bar",
+        "title": "KEV (ex Bar Rouge)",
+        "description": "бар с таким видом в Шанхае, что туда хочется возвращаться снова и снова…",
+        "category": "bar",
+        "location": {
+            "geo": {
+                "lat": 31.2403725, 
+                "lon": 121.4851904,
+                "source": "osm",
+                "system": "wgs84"
+            },
+            "cityId": "shanghai",
+            "province": "Shanghai",
+            "address": "上海市黄浦区中山东一路18号外滩18号7层"
+        },
+        "visit": {},
+        "media": [
+            {
+                "id": "kev-bar-1",
+                "type": "image",
+                "src": "/media/kev-bar-1.png"
+            }
+        ],
+        "links": [
+            {
+                "label": "Instagram Reel",
+                "url": "https://www.instagram.com/reel/DY2GKpfu_nJ/?igsh=MTNocXl6anUzOTNpNA%3D%3D"
+            }
+        ],
+        "createdAt": "2026-08-27T04:59:31.207657+00:00",
+        "updatedAt": "2026-08-27T04:59:31.207657+00:00",
         "verified": true
     }
 ]

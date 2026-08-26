@@ -6,8 +6,9 @@ export type Category =
   | 'hotel'
   | 'station'
   | 'airport'
-  | 'meeting_point';
-// TODO: bar category\
+  | 'meeting_point'
+  | 'bar';
+
 export type AttractionKind =
   | 'museum'
   | 'palace'
